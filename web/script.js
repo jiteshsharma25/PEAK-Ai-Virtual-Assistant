@@ -1,6 +1,6 @@
 window.addEventListener("load", windowLoadHandler, false);
-var sphereRad = 200;
-var radius_sp = 1.1;
+var sphereRad = 230;
+var radius_sp = 1;
 //for debug messages
 var Debugger = function () { };
 Debugger.log = function (message) {
@@ -72,9 +72,9 @@ function canvasApp() {
 		numToAddEachFrame = 8;
 
 		//particle color
-		r = 255;
-		g = 165;
-		b = 0;
+		r = 249;
+		g = 139;
+		b = 5;
 
 		rgbString = "rgba(" + r + "," + g + "," + b + ","; //partial string for color which will be completed by appending alpha value.
 		particleAlpha = 1; //maximum alpha
@@ -101,7 +101,7 @@ function canvasApp() {
 
 		gravity = -0; //try changing to a positive number (not too large, for example 0.3), or negative for floating upwards.
 
-		particleRad = 1.8;
+		particleRad = 3.5;
 
 		sphereCenterX = 0;
 		sphereCenterY = 0;
@@ -128,6 +128,10 @@ function canvasApp() {
 				x0 = sphereRad * Math.sin(phi) * Math.cos(theta);
 				y0 = sphereRad * Math.sin(phi) * Math.sin(theta);
 				z0 = sphereRad * Math.cos(phi);
+
+				//We use the addParticle function to add a new particle. The parameters set the position and velocity components.
+				//Note that the velocity parameters will cause the particle to initially fly outwards away from the sphere center (after
+				//it becomes unstuck).
 				var p = addParticle(x0, sphereCenterY + y0, sphereCenterZ + z0, 0.002 * x0, 0.002 * y0, 0.002 * z0);
 
 				//we set some "envelope" parameters which will control the evolving alpha of the particles.
